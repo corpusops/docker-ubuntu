@@ -570,6 +570,7 @@ do_clean_tags() {
 #     refresh_images library/ubuntu: only refresh ubuntu images
 do_refresh_images() {
     local imagess="${@:-$default_images}"
+    cp -vf local/corpusops.bootstrap/bin/cops_pkgmgr_install.sh helpers/
     if [ ! -e local/docker-images ];then
         git clone https://github.com/corpusops/docker-images local/docker-images
     fi
