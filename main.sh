@@ -288,11 +288,7 @@ library/ubuntu/latest\
  library/ubuntu/20.04\
  library/ubuntu/focal::30
 library/ubuntu/18.04\
- library/ubuntu/bionic\
- library/ubuntu/14.04\
- library/ubuntu/trusty\
- library/ubuntu/16.04\
- library/ubuntu/xenial::9
+ library/ubuntu/bionic::9
 "
 SKIP_REFRESH_ANCESTORS=${SKIP_REFRESH_ANCESTORS-}
 
