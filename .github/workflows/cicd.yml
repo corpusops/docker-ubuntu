@@ -65,7 +65,8 @@ jobs:
       fail-fast: false
       matrix:
         IMAGES:
-        - "library/ubuntu/latest library/ubuntu/bionic library/ubuntu/20.04 library/ubuntu/18.04 library/ubuntu/16.04 library/ubuntu/xenial"
+        - "library/ubuntu/latest library/ubuntu/22.04 library/ubuntu/jammy library/ubuntu/20.04 library/ubuntu/focal"
+        - "library/ubuntu/18.04 library/ubuntu/bionic library/ubuntu/14.04 library/ubuntu/trusty library/ubuntu/16.04 library/ubuntu/xenial"
         #- "corpusops/test/a corpusops/test/b corpusops/test/c"
         # all images that werent explicitly told to be built would be built in the next batches
         # we span them onto N jobs
