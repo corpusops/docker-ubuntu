@@ -6,3 +6,4 @@
 | original   | wrapped  |
 |------------|-----------|
 | [library/ubuntu](https://hub.docker.com/_/ubuntu)                         | [corpusops/ubuntu](https://hub.docker.com/r/corpusops/ubuntu)                   |
+
