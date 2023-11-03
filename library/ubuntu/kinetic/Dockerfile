@@ -1,4 +1,4 @@
-FROM library/ubuntu:16.04
+FROM library/ubuntu:kinetic
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG INSTALL_DEFAULT_LOCALE="fr_FR.UTF-8"
