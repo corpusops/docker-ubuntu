@@ -101,6 +101,10 @@ bionic-20220401
 bionic-20220415
 bionic-20220427
 bionic-20220531
+bionic-20220801
+bionic-20220829
+bionic-20220902
+bionic-20220913
 cosmic
 cosmic-20180605
 cosmic-20180716
@@ -181,6 +185,9 @@ focal-20220404
 focal-20220415
 focal-20220426
 focal-20220531
+focal-20220801
+focal-20220826
+focal-20220922
 groovy
 groovy-20200505
 groovy-20200609
@@ -244,9 +251,15 @@ jammy-20220404
 jammy-20220421
 jammy-20220428
 jammy-20220531
+jammy-20220801
+jammy-20220815
+jammy-20221003
 kinetic
 kinetic-20220428
 kinetic-20220602
+kinetic-20220801
+kinetic-20220830
+kinetic-20220922
 latest
 lucid
 precise
