@@ -74,6 +74,7 @@ if [ -e /etc/redhat-release ];then
     fi
 fi
 DEBIAN_OLDSTABLE=8
+PG_DEBIAN_OLDSTABLE=9
 find /etc -name "*.reactivate" | while read f;do
     mv -fv "$f" "$(basename $f .reactivate)"
 done
@@ -130,21 +131,44 @@ if ( echo $DISTRIB_ID | grep -E -iq "debian|mint|ubuntu" );then
         # fix old debian unstable images
         sed -i -re "s!sid(/)?!$DISTRIB_CODENAME\1!" $(find /etc/apt/sources.list* -type f)
         OAPTMIRROR="archive.debian.org"
-        sed -i -r -e '/-updates|security.debian.org/d' \
-            $( find /etc/apt/sources.list* -type f; )
+        sed -i -r -e '/-updates|security.debian.org/d' $( find /etc/apt/sources.list* -type f; )
         if (echo $DISTRIB_ID|grep -E -iq debian) && [ $DISTRIB_RELEASE -eq $DEBIAN_OLDSTABLE ];then
             log "Using debian LTS packages"
             echo "$DEBIAN_LTS_SOURCELIST" >> /etc/apt/sources.list
             rm -rvf /var/lib/apt/*
         fi
     fi
-    if ( echo $DISTRIB_ID | grep -E -iq "mint|ubuntu" ) && \
-        ( echo $DISTRIB_RELEASE |grep -E -iq $oldubuntu);then
+    if ( echo $DISTRIB_ID | grep -E -iq "mint|ubuntu" ) && ( echo $DISTRIB_RELEASE |grep -E -iq $oldubuntu);then
         OAPTMIRROR="old-releases.ubuntu.com"
-        sed -i -r \
+        # 16.04/14.04 is not yet on old mirrors and were switched back to regular mirrors
+        if (echo $DISTRIB_RELEASE |grep -E -v -iq "14.04|16.04");then
+            sed -i -r \
             -e 's/^(deb.*ubuntu)\/?(.*-(security|backport|updates).*)/#\1\/\2/g' \
             -e 's!'$NAPTMIRROR'!'$OAPTMIRROR'!g' \
             $( find /etc/apt/sources.list* -type f; )
+        else
+             sed -i -r \
+            -e 's/^(deb.*ubuntu)\/?(.*-(security|backport|updates).*)/#\1\/\2/g' \
+            -e 's!'$OAPTMIRROR'!'$NAPTMIRROR'!g' \
+            $( find /etc/apt/sources.list* -type f; )
+       fi
+    fi
+    if (echo $DISTRIB_ID|grep -E -iq debian) && [ -e $pglist ] && [ $DISTRIB_RELEASE -le $PG_DEBIAN_OLDSTABLE ] && [ -e /etc/apt/sources.list.d/pgdg.list ];then
+        sed -i -re "s/apt.postgresql/apt-archive.postgresql/g" -e "s/http:/https:/g" /etc/apt/sources.list.d/pgdg.list
+    fi
+    if ( (echo $DISTRIB_ID|grep -E -iq "mint|ubuntu" ) && ( echo $DISTRIB_RELEASE |grep -E -iq $oldubuntu); ) ||\
+       ( (echo $DISTRIB_ID|grep -E -iq debian) && [ $DISTRIB_RELEASE -le $DEBIAN_OLDSTABLE ]; ) ||\
+       ( (echo $DISTRIB_ID|grep -E -iq debian) && [ -e $pglist ] && [ $DISTRIB_RELEASE -le $PG_DEBIAN_OLDSTABLE ]; );then
+        printf 'Acquire::Check-Valid-Until no;\nAPT{ Get { AllowUnauthenticated "1"; }; };\n\n'>/etc/apt/apt.conf.d/nogpgverif
+        if (dpkg -l|grep -vq apt-transport-https);then sed -i -re "s/^(deb.*https:.*)/#\1 #httpsfix/g" $(find /etc/apt/sources.list* -type f);fi
+        apt-get update || true
+        while true;do sleep 123;done
+        if ! (apt-get install -y ca-certificates apt-transport-https apt bzip2);then
+            apt-get full-upgrade -y
+            apt-get install -y ca-certificates apt-transport-https apt bzip2
+        fi
+        sed -i -re "s/^#(.*)#httpsfix/\1/g" $(find /etc/apt/sources.list* -type f)
+        apt-get update
     fi
 fi
 
@@ -205,7 +229,9 @@ fi
 if ( echo "$DISTRIB_ID $DISTRIB_RELEASE $DISTRIB_CODENAME" | grep -E -iq alpine );then
     log "Upgrading alpine"
     apk update && apk add bash
-    apk upgrade --update-cache --available
+    if !(apk upgrade --update-cache --available);then
+        apk upgrade --update-cache && apk upgrade --update-cache --available
+    fi
 fi
 ./bin/fix_letsencrypt.sh
 export FORCE_INSTALL=y

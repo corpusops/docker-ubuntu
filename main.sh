@@ -254,7 +254,7 @@ CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 SKIPPED_TAGS=":(10|12|12|13|13|14\.(10|04\.)|15)"
 # SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|focal|groovy|rolling|lucid|precise|quantal|raring|saucy|trusty|utopic|vivid|wily"
-SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|groovy|rolling|lucid|precise|quantal|raring|saucy|utopic|vivid|wily|16.10|21.04|14\.|16\.|xenial|trusty|yakkety|hirsute"
+SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|groovy|rolling|lucid|precise|quantal|raring|saucy|utopic|vivid|wily|16.10|21.04|14\.10|16\.10|yakkety|hirsute"
 
 
 
@@ -288,7 +288,11 @@ library/ubuntu/latest\
  library/ubuntu/20.04\
  library/ubuntu/focal::30
 library/ubuntu/18.04\
- library/ubuntu/bionic::9
+ library/ubuntu/bionic::9 
+library/ubuntu/16.04\
+ library/ubuntu/xenial::9
+library/ubuntu/14.04\
+ library/ubuntu/trusy::9
 "
 SKIP_REFRESH_ANCESTORS=${SKIP_REFRESH_ANCESTORS-}
 

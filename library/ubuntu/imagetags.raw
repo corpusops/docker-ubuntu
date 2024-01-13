@@ -27,6 +27,7 @@
 21.10
 22.04
 22.10
+23.04
 artful
 artful-20170511.1
 artful-20170601
@@ -106,6 +107,7 @@ bionic-20220829
 bionic-20220902
 bionic-20220913
 bionic-20221019
+bionic-20221130
 cosmic
 cosmic-20180605
 cosmic-20180716
@@ -190,6 +192,7 @@ focal-20220801
 focal-20220826
 focal-20220922
 focal-20221019
+focal-20221130
 groovy
 groovy-20200505
 groovy-20200609
@@ -258,6 +261,7 @@ jammy-20220815
 jammy-20221003
 jammy-20221020
 jammy-20221101
+jammy-20221130
 kinetic
 kinetic-20220428
 kinetic-20220602
@@ -266,8 +270,11 @@ kinetic-20220830
 kinetic-20220922
 kinetic-20221024
 kinetic-20221101
+kinetic-20221130
 latest
 lucid
+lunar
+lunar-20221207
 precise
 precise-20150212
 precise-20150228.11
