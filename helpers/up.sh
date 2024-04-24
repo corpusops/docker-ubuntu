@@ -62,8 +62,8 @@ if [ "x${DISTRIB_ID}" = "xcentos" ] && ( echo  "${DISTRIB_MAJOR}" | grep -Eq "^(
     sed -i 's/^mirrorlist/#mirrorlist/g;s|^#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 fi
 if ( echo $DISTRIB_ID | grep -E -iq "centos|red|fedora" );then
-    if (echo $DISTRIB_ID|grep -E -iq centos);then
-        if [ "$DISTRIB_RELEASE" = "7" ];then
+    if (echo $DISTRIB_ID|grep -E -iq centos);then 
+        if (echo "$DISTRIB_RELEASE"|egrep -q "8|7");then
             OCENTOSMIRROR="${OCENTOSMIRROR:-mirror.centos.org}"
             NCENTOSMIRROR="${NCENTOSMIRROR:-vault.centos.org}"
         elif [ $DISTRIB_RELEASE -le $CENTOS_OLDSTABLE ];then
