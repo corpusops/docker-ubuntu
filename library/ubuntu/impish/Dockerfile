@@ -1,4 +1,4 @@
-FROM library/ubuntu:impish
+FROM library/ubuntu:impish AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

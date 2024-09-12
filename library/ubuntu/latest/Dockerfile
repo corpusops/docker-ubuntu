@@ -1,4 +1,4 @@
-FROM library/ubuntu:latest
+FROM library/ubuntu:latest AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

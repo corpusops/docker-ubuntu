@@ -1,4 +1,4 @@
-FROM library/ubuntu:lunar
+FROM library/ubuntu:lunar AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

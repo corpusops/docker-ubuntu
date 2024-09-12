@@ -1,4 +1,4 @@
-FROM library/ubuntu:xenial
+FROM library/ubuntu:xenial AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

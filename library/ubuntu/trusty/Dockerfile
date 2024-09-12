@@ -1,4 +1,4 @@
-FROM library/ubuntu:trusty
+FROM library/ubuntu:trusty AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

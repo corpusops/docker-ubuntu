@@ -1,4 +1,4 @@
-FROM library/ubuntu:20.10
+FROM library/ubuntu:20.10 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

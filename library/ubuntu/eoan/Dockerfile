@@ -1,4 +1,4 @@
-FROM library/ubuntu:eoan
+FROM library/ubuntu:eoan AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

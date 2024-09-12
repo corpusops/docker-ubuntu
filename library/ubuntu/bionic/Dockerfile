@@ -1,4 +1,4 @@
-FROM library/ubuntu:bionic
+FROM library/ubuntu:bionic AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

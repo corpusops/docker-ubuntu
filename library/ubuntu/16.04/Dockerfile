@@ -1,4 +1,4 @@
-FROM library/ubuntu:16.04
+FROM library/ubuntu:16.04 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

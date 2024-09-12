@@ -1,4 +1,4 @@
-FROM library/ubuntu:cosmic
+FROM library/ubuntu:cosmic AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

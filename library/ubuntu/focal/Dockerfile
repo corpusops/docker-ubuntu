@@ -1,4 +1,4 @@
-FROM library/ubuntu:focal
+FROM library/ubuntu:focal AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

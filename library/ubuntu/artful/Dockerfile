@@ -1,4 +1,4 @@
-FROM library/ubuntu:artful
+FROM library/ubuntu:artful AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

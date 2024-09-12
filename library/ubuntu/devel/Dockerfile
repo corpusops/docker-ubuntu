@@ -1,4 +1,4 @@
-FROM library/ubuntu:devel
+FROM library/ubuntu:devel AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

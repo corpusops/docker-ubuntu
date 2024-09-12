@@ -1,4 +1,4 @@
-FROM library/ubuntu:kinetic
+FROM library/ubuntu:kinetic AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive
