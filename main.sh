@@ -254,7 +254,7 @@ CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 SKIPPED_TAGS=":(10|12|12|13|13|14\.(10|04\.)|15)"
 # SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|focal|groovy|rolling|lucid|precise|quantal|raring|saucy|trusty|utopic|vivid|wily"
-SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|groovy|rolling|lucid|precise|quantal|raring|saucy|utopic|vivid|wily|16.10|21.04|23.10|24.10|mantic|oracular|14\.10|16\.10|yakkety|hirsute"
+SKIPPED_TAGS="$SKIPPED_TAGS|-[0-9]|disco|groovy|rolling|lucid|precise|quantal|raring|saucy|utopic|vivid|wily|yakkety|16.10|14\.10"
 
 
 
