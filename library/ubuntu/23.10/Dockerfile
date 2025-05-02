@@ -93,4 +93,5 @@ SHELL ["busybox",  "sh", "-c"]
 RUN --mount=type=bind,from=final,target=$ROOTFS --mount=type=bind,from=squashed-rsync,target=${ROOTFS}_rsync \
 rsync -Aaz --delete ${ROOTFS}/ / --exclude=/proc --exclude=/sys --exclude=/etc/resolv.conf --exclude=/etc/hosts --exclude=$ROOTFS* --exclude=dev/shm --exclude=dev/pts --exclude=dev/mqueue
 SHELL ["/bin/sh", "-c"]
+ARG DOCKER_IMAGES_COMMIT="$DOCKER_IMAGES_COMMIT"
 LABEL com.github.corpusops.docker-images-commit="$DOCKER_IMAGES_COMMIT"
